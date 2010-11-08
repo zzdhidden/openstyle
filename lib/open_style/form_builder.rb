@@ -17,6 +17,7 @@ module OpenStyle
       options = content_or_options if block_given?
       options ||= {}
       options.stringify_keys!
+      options["class"] ||= "clearfix"
       title = label(field, options["label"])
       title << @template.content_tag("em", "*") if options.delete("required")
       @template.dl_tag(title, content_or_options, options, &block)
