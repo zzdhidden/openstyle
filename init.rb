@@ -6,6 +6,8 @@ ActionView::Base.send(:include, OpenStyle::ViewHelper)
 ActionController::Base.send(:include, OpenStyle::ControllerHelper)
 ActionController::Base.send(:include, OpenStyle::TabsHelper)
 
+ActionController::Base.send(:include, OpenStyle::GridHelper)
+
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   html_tag
 end

@@ -88,42 +88,42 @@ module OpenStyle
       text
     end
 
-    def tabs_tag options, selected = nil, html_options = {}
-      add_class_to_options 'tabs ul clearfix', html_options
-      list = options.collect do |a| 
-        current = selected == a[0] ? 'current' : nil 
-        right = a[3] ? nil : 'left'
-        class_name = "#{current} #{right}".strip
-        class_name = nil if class_name.blank?
-        content_tag(:li, link_to(a[1], a[2]), :class => class_name) 
-      end
-      content_tag 'ul', raw(list.join("")), html_options
-    end
+    #def tabs_tag options, selected = nil, html_options = {}
+    #  add_class_to_options 'tabs ul clearfix', html_options
+    #  list = options.collect do |a| 
+    #    current = selected == a[0] ? 'current' : nil 
+    #    right = a[3] ? nil : 'left'
+    #    class_name = "#{current} #{right}".strip
+    #    class_name = nil if class_name.blank?
+    #    content_tag(:li, link_to(a[1], a[2]), :class => class_name) 
+    #  end
+    #  content_tag 'ul', raw(list.join("")), html_options
+    #end
 
-    def navigation_item_tag id, title, url, html_options = {}
-      add_class_to_options(current_tab?(id, :navigation) ? 'current' : nil, html_options)
-      html_options[:id] = id
-      content_tag('li', link_to(icon_tag(id) + title, url), html_options)
-    end
+    #def navigation_item_tag id, title, url, html_options = {}
+    #  add_class_to_options(current_tab?(id, :navigation) ? 'current' : nil, html_options)
+    #  html_options[:id] = id
+    #  content_tag('li', link_to(icon_tag(id) + title, url), html_options)
+    #end
 
-    def menu_item_tag id, title, url, html_options = {}, &block
-      raise ArgumentError, "Missing block" unless block_given?
-      if current_tab?(id, :menu) 
-        class_name =  'item current' + (html_options[:class].blank? ? "" : " current-" + html_options[:class].strip.gsub(/\s+/,"-") )
-      else
-        class_name =  'item'
-      end
-      add_class_to_options(class_name, html_options)
-      html_options[:id] = id
-      #content_tag('span', id.humanize)
-      content_tag('li', content_tag('h4', link_to(icon_tag(id) + title, url)) + capture(&block) , html_options) 
-    end
+    #def menu_item_tag id, title, url, html_options = {}, &block
+    #  raise ArgumentError, "Missing block" unless block_given?
+    #  if current_tab?(id, :menu) 
+    #    class_name =  'item current' + (html_options[:class].blank? ? "" : " current-" + html_options[:class].strip.gsub(/\s+/,"-") )
+    #  else
+    #    class_name =  'item'
+    #  end
+    #  add_class_to_options(class_name, html_options)
+    #  html_options[:id] = id
+    #  #content_tag('span', id.humanize)
+    #  content_tag('li', content_tag('h4', link_to(icon_tag(id) + title, url)) + capture(&block) , html_options) 
+    #end
 
-    def submenu_item_tag id, title, url, html_options = {}
-      add_class_to_options(current_tab?(id, :submenu) ? 'sub-current' : nil, html_options)
-      html_options[:id] = id
-      content_tag('li', link_to(icon_tag('submenu') + title, url), html_options)
-    end
+    #def submenu_item_tag id, title, url, html_options = {}
+    #  add_class_to_options(current_tab?(id, :submenu) ? 'sub-current' : nil, html_options)
+    #  html_options[:id] = id
+    #  content_tag('li', link_to(icon_tag('submenu') + title, url), html_options)
+    #end
 
     def icon_tag class_name, options = {}
       options[:class] = 'icon icon-' + class_name
@@ -187,6 +187,16 @@ module OpenStyle
         content_or_options = add_class_to_options(default_class_name, content_or_options)
       else
         options = add_class_to_options(default_class_name, options)
+      end
+      content_tag(tag, content_or_options, options, &block)
+    end
+
+    def content_tag_with_default_options tag, default_options, content_or_options = nil, options = nil, &block
+      if block_given? and content_or_options.is_a?(Hash)
+        content_or_options = {}.merge(default_options).merge(content_or_options)
+      else
+        options ||= {}
+        options = {}.merge(default_options).merge(options)
       end
       content_tag(tag, content_or_options, options, &block)
     end

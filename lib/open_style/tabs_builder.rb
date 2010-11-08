@@ -34,8 +34,8 @@ module OpenStyle
       @context.content_tag_with_default_class :li, class_name, content_or_options, options, &block    
     end
 
-    def method_missing(*args)
-      item(*args)
+    def method_missing(*args, &block)
+      item(*args, &block)
     end
 
     def render(&block)

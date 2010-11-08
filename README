@@ -3,6 +3,8 @@ Openstyle
 
 Introduction goes here.
 
+gem "will_paginate", "~> 3.0.pre2"
+
 
 Example
 =======
@@ -10,4 +12,4 @@ Example
 Example goes here.
 
 
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+Copyright (c) 2010 hidden, released under the MIT license
