@@ -23,6 +23,22 @@ module OpenStyle
       { :redirect_to => url_for(params) }
     end
 
+    # Notice message
+    # <tt>type</tt> :info, :success, :error
+    #
+    # Examples
+    #
+    #   notice_tag :info, "Notice message"
+    #
+    #   output:
+    #
+    #   <div class="notice notice-info">Notice message</div>
+    #
+
+    def notice_tag type = :info, content_or_options = nil, options = nil, &block
+      content_tag_with_default_class(:div, "notice notice-" + type.to_s, content_or_options, options, &block)
+    end
+
     def extlink_to text, url, options = {}
       add_class_to_options "extlink", options
       options[:target] = "_blank"
@@ -128,6 +144,12 @@ module OpenStyle
     def icon_tag class_name, options = {}
       options[:class] = 'icon icon-' + class_name
       content_tag(:em, options[:title], options)
+    end
+
+    def page_summary_tag object, options = {}
+      #http://gitrdoc.com/rdoc/mislav/will_paginate/b3b0f593ea9b1da13a64bc825dfe17b6bbc2828b/classes/WillPaginate/Collection.html
+      #<div class="summary">显示<%=@hosts.total_entries %>个中的<%=@hosts.size %>个</div>
+      content_tag(:div, I18n.l("page_summary", {:total => object.total_entries, :size => object.size}), :class => "summary")
     end
 
     def dl_tag title, content_or_options = nil, options = nil, &block

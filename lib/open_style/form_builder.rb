@@ -69,7 +69,7 @@ module OpenStyle
 
     def wrap name, content, options
       name = name.to_s
-      if name.include?("field")
+      if name.include?("field") or name.include?("text")
         @template.text_wrap_tag(content, options)
       elsif ['submit', 'button', 'reset'].include?(name)
         @template.button_wrap_tag(content, options)
