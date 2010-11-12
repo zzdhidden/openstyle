@@ -34,40 +34,44 @@ a:hover{
 .notice, .notice-success, .notice-error{
   padding:1em;
   margin: 1.2em 0;
-  background: #E8E8E8;
-  border: 1px solid #DFDFDF;
+  background-color:#EEEEFF;
+  border:1px solid #DDDDFF;
 }
-div.notice, div.notice-success, div.notice-error{
-  padding: 0 1em;
-}
+
 .notice-success{
-  background: #8fff79;
-  border: 1px solid #57cd68;
+  background-color:#FFFFCC;
+  border:1px solid #FFFAAA;
 }
 
 .notice-error{
-  background: #ff4258;
-  border: 1px solid #920000;
+  background-color:#FFDDDD;
+  border:1px solid #FFBBBB;
 }
-.content-notice .notice{
-  margin-top: 0;
-}
+
 /*form*/
 .text-wrap, .button-wrap{
   display: table;/*support firefox2*/
   display: inline-block;
            *display: inline;
+  border: 1px solid #ddd;
 }
+
 .text-wrap{
   background: #FFF url(../images/text_field_bg_l.png) no-repeat;
 }
-.text-wrap input{
+
+.text-wrap input, .text-wrap textarea{
   *margin: -1px 0;
   height:1.3em;
   border: none;
   padding: .6em .5em .5em;
   background: transparent url(../images/text_field_bg_r.png) no-repeat top right;
 }
+
+.text-wrap textarea{
+  height: 10em;
+}
+
 .button-wrap{
   background: #FFF url(../images/button_bg_l.png) no-repeat;
 }
@@ -111,6 +115,7 @@ div.notice, div.notice-success, div.notice-error{
   margin: auto;
   padding: 1.5em 0;
 }
+
 .column .form, .column .select-form{
   width: auto;
   padding-top: 0;
@@ -125,36 +130,41 @@ div.notice, div.notice-success, div.notice-error{
 .form fieldset legend{
   color: #002565;
 }
-.form-li{
+.form dl{
   margin: 1em;
 }
 .form-actions{
-  margin-top: 2.5em;
+  margin-top: 1.5em;
+  margin-left: 14.6em;
 }
-.form-label{
+.form dt{
   float: left;
   width: 13em;
   text-align: right;
-  padding: .4em .3em .5em 0;
+  padding: .4em .6em .5em 0;
 }
-.form-label em{
+
+.form dt em{
   color: #FFA200;
   line-height:1;
-  margin-right:0.3em;
   vertical-align:middle;
 }
 
-.form-data{
+.form dd{
   float: left;
+  padding: 0;
+  margin: 0;
 }
-.form-data .text-wrap input{
+
+.form dd .text-wrap input, .form dd .text-wrap textarea{
   width: 30em;
 }
-.form-data select{
+
+.form dd select{
   margin: .4em 0;
 }
 
-.form-data .label-wrap{
+.form dd .label-wrap{
   margin: .4em 1em .4em 0;
   display: -moz-inline-stack;/*support firefox2*/
   display: inline-block;
