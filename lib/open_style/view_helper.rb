@@ -65,7 +65,7 @@ module OpenStyle
         sort_dir = old_sort_dir == '-' ? '' : '-'
         sort_direction_indicator = icon_tag(sort_dir == "-" ? "desc" : "asc")
       end
-      link_to(content + sort_direction_indicator, url.update(:sort => sort_dir + name))
+      link_to(content_tag(:span, content) + sort_direction_indicator, url.update(:sort => sort_dir + name))
     end
 
     def link_button_to(*args)
