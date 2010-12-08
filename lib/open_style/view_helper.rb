@@ -46,7 +46,7 @@ module OpenStyle
     end
 
     def inlink_to *args
-      "[#{(link_to *args)}]"
+      raw("[#{(link_to *args)}]")
     end
 
     def sort_link_to name, content, url
