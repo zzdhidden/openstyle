@@ -193,7 +193,7 @@ module OpenStyle
     end
 
     def column_tag content_or_options = nil, options =nil, &block
-      content_tag_with_default_class "div", "column", content_tag(:div, content_or_options, {:class => "column-inner"}, &block), (options.is_a?(Hash) ? options : content_or_options)
+      content_tag_with_default_class "div", "column", content_tag(:div, content_or_options.is_a?(Hash) ? nil : content_or_options, {:class => "column-inner"}, &block), (options.is_a?(Hash) ? options : content_or_options)
     end
 
     def add_class_to_options class_name, options = nil
